@@ -25,16 +25,26 @@
                     </div>
                     <div id="search">
                         <input class="search" type="text" placeholder="Search all product">
-                        <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <i class="fa-solid fa-magnifying-glass search-btn"></i>
                     </div>
 
                     <div class="list-item">
                         <ul class="list">
-                            <li><i class="fa-solid fa-user"></i><a href="">Sign up</a></li>
-                            <li><i class="fa-regular fa-heart"></i><a href="">Wishlist</a></li>
-                            <li><i class="fa-solid fa-basket-shopping"></i><a href="">Basket</a></li>
-                            <li class="profile"><i class="fa-solid fa-user"></i><a href=""></a></li>
+                            <li><i class="fa-solid fa-user"></i><a class="user none" href="">Sign up</a></li>
+                            <li><a href=""  class="logout none">Logout</a></li>
+                            <li><i class="fa-regular fa-heart"></i><a href="wishlist.html">Wishlist</a></li>
+                            <li><i class="fa-solid fa-basket-shopping"></i><a href="basket.html">Basket</a></li>
+                            <li class="profile"><i class="fa-solid fa-user none"></i><a class="profile" href="">Profile</a></li>
+                            <li><a href="admin.html" class="admin" >Admin</a></li>
                         </ul>
+                        <div class="qeydiyyat none">
+                            <ul>
+                                <li><a class="login none" href="login.html">Login</a></li>
+                                <div class="xet"></div>
+                                <li><a class="none register" href="register.html">Register</a></li>
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="nav-alt">
@@ -52,6 +62,7 @@
             </div>
         </div>
     </header>
+
     <div class="buttons">
         <button class="settings">Settings</button>
         <div class="params none ">

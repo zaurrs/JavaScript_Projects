@@ -9,6 +9,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/basket.css">
     <title>Document</title>
+
 </head>
 
 <body>
@@ -28,10 +29,10 @@
                         <ul class="list">
                             <li><i class="fa-solid fa-user"></i><a class="user none" href="">Sign up</a></li>
                             <li><a href=""  class="logout none">Logout</a></li>
-                            <li><i class="fa-regular fa-heart"></i><a href="">Wishlist</a></li>
+                            <li><i class="fa-regular fa-heart"></i><a href="wishlist.html">Wishlist</a></li>
                             <li><i class="fa-solid fa-basket-shopping"></i><a href="">Basket</a></li>
                             <li class="profile"><i class="fa-solid fa-user none"></i><a class="profile" href="">Profile</a></li>
-                            <li><a href="" class="admin" >Admin</a></li>
+                            <li><a href="admin.html" class="admin" >Admin</a></li>
                         </ul>
                         <div class="qeydiyyat none">
                             <ul>
@@ -67,7 +68,9 @@
             <h4 class="price">Price</h4>
             <h4 class="quantity">Quantity</h4>
         </div>
-        <div class="card">
+
+        
+        <!-- <div class="card">
             <img src="./assets/images/5a34e83495d908 1 (2).png" alt="">
             <div class="card-content">
                 
@@ -81,11 +84,15 @@
             </div>
             <button><i class="fa-solid fa-trash remove"></i></button>
 
-        </div>
+        </div> -->
         <button class="delete">Remove All</button>
     </div>
 
-    <script src="./assets/js/basket.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.8/axios.min.js"
+        integrity="sha512-v8+bPcpk4Sj7CKB11+gK/FnsbgQ15jTwZamnBf/xDmiQDcgOIYufBo6Acu1y30vrk8gg5su4x0CG3zfPaq5Fcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="./assets/js/basket.js"></script>
 </body>
 
 </html>

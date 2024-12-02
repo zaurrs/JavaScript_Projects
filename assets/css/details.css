@@ -151,7 +151,7 @@
         .wish {
           position: absolute;
           top: 10px;
-          right: 10px;
+          left: 250px;
           color: red;
           font-size: 22px;
         }
@@ -232,7 +232,10 @@
             color: yellow;
           }
         }
-
+        .quantity{
+          display: flex;
+          gap: 5px;
+        } 
         .add-btn {
           width: 250px;
           height: 40px;

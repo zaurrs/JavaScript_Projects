@@ -91,7 +91,8 @@ let getProducts = async () => {
 
             let card = document.createElement('div');
             card.classList.add('card');
-            card.addEventListener("click", () => {
+            card.addEventListener("click", (e) => {
+                e.stopPropagation()
                 if (currentUser.isLogined) {
                     window.location.href =(`details.html?id=${product.id}`)
                 }
@@ -111,23 +112,21 @@ let getProducts = async () => {
             heart.classList.add("fa-regular", "fa-heart", "wish");
             heart.style.cursor = "pointer"
             heart.addEventListener("click", async (e) => {
-                e.stopPropagation(); // Prevent the click event from propagating
-                e.preventDefault(); // Prevent default action (page refresh)
-
-                // Check if the user is logged in
+                e.stopPropagation();
+                e.preventDefault(); 
+                if (currentUser.isLogined) {
+                    window.location.href =(`wishlist.html?id=${product.id}`)
+                }
                 if (currentUser) {
-                    // Check if the product is already in the wishlist
                     const productInWishlist = currentUser.wishlist.some(item => item.id === product.id);
 
                     if (!productInWishlist) {
-                        // Add the product to the wishlist if it's not already in
                         heart.classList.remove("fa-regular");
                         heart.classList.add("fa-solid");
 
                         const updatedWishlist = [...currentUser.wishlist, product]; // Add product to the wishlist
 
                         try {
-                            // Update the wishlist in the backend
                             await axios.patch(`http://localhost:3000/users/${currentUser.id}`, { wishlist: updatedWishlist });
                             toast("Product added to wishlist!");
                         } catch (error) {
@@ -135,14 +134,12 @@ let getProducts = async () => {
                             toast("Error adding product to wishlist.");
                         }
                     } else {
-                        // Remove the product from the wishlist if it's already in
                         heart.classList.remove("fa-solid");
                         heart.classList.add("fa-regular");
 
                         const updatedWishlist = currentUser.wishlist.filter(item => item.id !== product.id); // Remove product from wishlist
 
                         try {
-                            // Update the wishlist in the backend
                             await axios.patch(`http://localhost:3000/users/${currentUser.id}`, { wishlist: updatedWishlist });
                             toast("Product removed from wishlist!");
                         } catch (error) {
@@ -151,7 +148,6 @@ let getProducts = async () => {
                         }
                     }
                 } else {
-                    // If the user is not logged in, redirect to login page
                     toast("Please log in to add/remove products from your wishlist.");
                     setTimeout(() => {
                         window.location.href = "login.html"; // Redirect to login page after 2 seconds
@@ -175,39 +171,38 @@ let getProducts = async () => {
 
             let title = document.createElement("p");
             title.classList.add("title");
-            title.textContent = product.title.slice(0, 15); // Ürün başlığı
+            title.textContent = product.title.slice(0, 15);
 
             let price = document.createElement("div");
             price.classList.add("price");
 
             let p = document.createElement("p");
             p.classList.add("red-price");
-            p.textContent = `$${product.price}`; // Ürün fiyatı
+            p.textContent = `$${product.price}`; 
 
             let from = document.createElement("p");
             from.classList.add("from");
-            from.textContent = "From $340.00"; // Varsayılan fiyat
+            from.textContent = "From $340.00"; 
 
             let addBtn = document.createElement("button");
             addBtn.classList.add("add-btn");
-            addBtn.textContent = "Add to cart"; // Button text to add to cart
+            addBtn.textContent = "Add to cart"; 
             addBtn.style.cursor = "pointer";
 
             addBtn.addEventListener("click", async (e) => {
-                e.stopPropagation(); // Prevent the click event from propagating
-                e.preventDefault(); // Prevent default action (page refresh)
+                e.stopPropagation(); 
+                e.preventDefault(); 
 
-                // Check if the user is logged in
                 if (currentUser) {
-                    // Check if the product is already in the basket
+                    if (currentUser.isLogined) {
+                        window.location.href =(`basket.html?id=${product.id}`)
+                    }
                     const productInBasket = currentUser.basket.some(item => item.id === product.id);
 
                     if (!productInBasket) {
-                        // Add the product to the basket if it's not already there
                         const updatedBasket = [...currentUser.basket, product]; // Add product to the basket
 
                         try {
-                            // Update the basket in the backend
                             await axios.patch(`http://localhost:3000/users/${currentUser.id}`, { basket: updatedBasket });
                             toast("Product added to basket!");
                         } catch (error) {
@@ -215,11 +210,9 @@ let getProducts = async () => {
                             toast("Error adding product to basket.");
                         }
                     } else {
-                        // Remove the product from the basket if it's already there
                         const updatedBasket = currentUser.basket.filter(item => item.id !== product.id); // Remove product from basket
 
                         try {
-                            // Update the basket in the backend
                             await axios.patch(`http://localhost:3000/users/${currentUser.id}`, { basket: updatedBasket });
                             toast("Product removed from basket!");
                         } catch (error) {
@@ -228,7 +221,6 @@ let getProducts = async () => {
                         }
                     }
                 } else {
-                    // If the user is not logged in, redirect to login page
                     toast("Please log in to add/remove products from your basket.");
                     setTimeout(() => {
                         window.location.href = "login.html"; // Redirect to login page after 2 seconds

@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", async ()=>{
     
     let searchInp = document.querySelector(".search")
     let searchBtn = document.querySelector(".search-btn")
+    
     searchBtn.addEventListener("click", ()=>{
        
        let searchValue= searchInp.value.trim()
