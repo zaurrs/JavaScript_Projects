@@ -1,0 +1,25 @@
+  .container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    .register{
+        padding: 15px;
+        background: linear-gradient(to right, rgb(133, 132, 132), black);
+        width: 40%;
+        .row{
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+           
+        }
+        .register-btn{
+            width: 90%;
+            height: 40px;
+            margin-left: 25px;
+            border-radius: 10px;
+            background:  linear-gradient(to right, black,rgb(133, 132, 132));;
+        }
+    }
+  }
